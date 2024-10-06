@@ -9,7 +9,7 @@ body{
   box-sizing: border-box;
 }
 .main{
-  width:600px;
+  width:60%;
   height:auto;
   background: #FFFFFF;
   position: absolute;
@@ -103,12 +103,13 @@ p{
 }
 .footer{
   display: flex;
-  justify-content: space-around;
-  padding:0px 100px;
+  justify-content: center;
+  
   
 }
 .footer a{
   text-decoration: none;
   color:#0D6CE7;
+  margin: 0px 10px;
   text-transform: capitalize;
 }
