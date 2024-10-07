@@ -28,7 +28,7 @@ function validation() {
     alrt_msg.innerHTML = 'Error!Invalid LoginId and password';
   } else {
     alrt_msg.innerText = '';
-    window.location="/dashboard.html"
+    window.location="dashboard.html"
   }
 }
 const canvas = document.getElementById('captcha-canvas');
