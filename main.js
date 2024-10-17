@@ -1,97 +1,82 @@
-const enroll_num = document.querySelector('#enroll_num');
+const name = document.querySelector('#name');
+const fat_name = document.querySelector('#fat_name');
+const mot_name = document.querySelector('#mot_name');
+const roll_no = document.querySelector('#rollno');
+const enroll_no = document.querySelector('#enrollno');
+const college = document.querySelector('#college');
+const semester = document.querySelector('#semester');
+const subjects = document.querySelectorAll('.subjects');
 const password = document.querySelector('#password');
-const show = document.querySelector('#show');
-const hide = document.querySelector('#hide');
-const captcha_input = document.getElementById('captcha_input');
-const login = document.getElementById('login');
-const alrt_msg = document.getElementById('alert');
-const enroll_msg = document.getElementById('enroll_alrt');
-const pass_msg = document.getElementById('pass_alrt');
-const capt_msg = document.getElementById('capt_alrt');
+const cmf_password = document.querySelector('#cmf_password');
+const btn = document.querySelector('#submit')
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyAeklfKOLl_3zIZ1sA81aqtWM3xikIbKas",
+  authDomain: "mgkvp-website.firebaseapp.com",
+  projectId: "mgkvp-website",
+  storageBucket: "mgkvp-website.appspot.com",
+  messagingSenderId: "306111041649",
+  appId: "1:306111041649:web:1c51ba0f01dfa5d1000bd0"
+};
+const app = initializeApp(firebaseConfig);
+import { getDatabase, ref, set, child, update, remove }
+from "https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js";
+const db = getDatabase();
+let subjects_info = [];
 
-function validation() {
-  if (enroll_num.value === '') {
-    enroll_msg.innerText = 'Enroll No. field is mandatory';
-  } else if (enroll_num.value.length < 16) {
-    enroll_msg.innerText = 'Invalid enrollment number';
+function Subjects() {
+  for (let i = 0; i < subjects.length; i++) {
+    if (subjects[i].checked) {
+      subjects_info.push(subjects[i].value);
+      
+    }
+    
+  }
+}
+Subjects()
+function insertData() {
+  set(ref(db, "mgkvp-website/" + enroll_no.value), {
+      Name: name.value,
+      Fathername: fat_name.value,
+      MotherName: mot_name.value,
+      Rollno: roll_no.value,
+      Enrollno: enroll_no.value,
+      College: college.value,
+      Semester: semester.value,
+      Subjects: subjects_info,
+      Password: password.value
+    })
+    .then(() => {
+      console.log("Data successfully store");
+      alert("Form Submission Successful"); 
+      window.location="/login.html";
+    })
+    .catch((error) => {
+      alert("Unsuccessful,error " + error)
+    })
+}
+btn.addEventListener('click', () => {
+  Subjects();
+  
+  if ((name.value !== '') &&
+    (fat_name.value !== '') &&
+    (mot_name.value !== '') &&
+    (college.value !== '') &&
+    (rollno.value !== '') &&
+    (enroll_no.value !== '') &&
+    (semester.value !== '') &&
+    (subjects_info.length > 0) &&
+    (password.value !== '') &&
+    (cmf_password.value !== '')) {
+
+    if (password.value !== cmf_password.value) {
+      alert("Passwords do not match");
+    } else {
+      insertData();
+      
+      
+    }
   } else {
-    enroll_msg.innerText = '';
+    alert("Please fill all fields");
   }
-
-  if (password.value === '') {
-    pass_msg.innerText = 'Password field is mandatory';
-  } else {
-    pass_msg.innerText = '';
-  }
-
-  if (enroll_num.value.length < 16 && password.value !== '') {
-    alrt_msg.innerHTML = 'Error!Invalid LoginId and password';
-  } else {
-    alrt_msg.innerText = '';
-    window.location="dashboard.html"
-  }
-}
-const canvas = document.getElementById('captcha-canvas');
-const ctx = canvas.getContext('2d');
-const input = document.getElementById('captcha-input');
-const _login = document.getElementById('login');
-const refresh = document.getElementById('captcha-refresh');
-
-let captchaCode = '';
-
-function generateCaptcha() {
-  captchaCode = '';
-  for (let i = 0; i < 6; i++) {
-    const randomChar = getRandomChar();
-    captchaCode += randomChar;
-  }
-  drawCaptcha();
-}
-
-function getRandomChar() {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-  return chars.charAt(Math.floor(Math.random() * chars.length));
-}
-
-function drawCaptcha() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.font = '27px Arial';
-  ctx.fillStyle = '#333';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.strokeText(captchaCode, canvas.width / 2, canvas.height / 2);
-}
-function captcha_validation(){
-  if (captcha_input.value !== captchaCode) {
-    capt_msg.innerText = 'Invalid Captcha, try Again';
-  } else {
-    capt_msg.innerText = '';
-    validation();
-  }
-}
-function Login(){
-  captcha_validation();
-  generateCaptcha();
-    };
-
-generateCaptcha();
-
-refresh.addEventListener('click', () => {
-  generateCaptcha();
-});
-
-show.addEventListener('click', () => {
-  show.style.display = "none";
-  hide.style.display = "flex";
-  password.type = 'text'
-});
-hide.addEventListener('click', () => {
-  hide.style.display = "none";
-  show.style.display = "flex";
-  password.type = 'password'
-});
-
-login.addEventListener('click', () => {
-  Login()
-
 })

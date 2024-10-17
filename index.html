@@ -1,44 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Mgkvp_official_website</title>
-
-  <!-- HTML -->
-
-
-  <!-- Custom Styles -->
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="captcha.css">
+  <title>Student Information Form</title>
+<link rel="stylesheet" href="style.css">
+  
 </head>
+
 <body>
+
+  <h3>Student Registration</h3>
+
   <div class="main">
-    <p>Sign into your account</p>
-    <input type="text" name="enroll_num" id="enroll_num" placeholder="Enrollment No." maxlength="16"><br><span id="enroll_alrt"></span><br>
-    <div class="pass"><input type="password" name="password" id="password" placeholder="Password"><i class="ri-eye-fill" id="show"></i><i class="ri-eye-off-fill" id="hide"></i></div>
-    <span id="pass_alrt"></span>
-    <h6 id="indication">* In case of date of birth use MM/dd/yy format</h6>
-    <div id="captcha-container">
-      <div id="inline">
-        <canvas id="captcha-canvas" width="112" height="50"></canvas>
-        <img src="https://janhit.mgkvp.ac.in/JanhitAssestHome/img/Refresh-icon.png" width="25px" height="25px" id="captcha-refresh">
-      </div>
-      <input type="text" id="captcha_input" placeholder="Captcha" maxlength="6"><br><span id="capt_alrt"></span>
-    </div>
-    <button id="login">LOG IN</button>
-    <div class="footer">
-      <a href="dashboard.html">student registration</a>
-      <span>|</span>
-      <a href="/forgot_password.html">forgot password</a>
-    </div>
-    <p id="alert"></p>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="fat_name">Father's Name:</label>
+    <input type="text" id="fat_name" name="fatherName" required><br><br>
+
+    <label for="mot_name">Mother's Name:</label>
+    <input type="text" id="mot_name" name="motherName" required><br><br>
+
+    <label for="rollno">Roll No.:</label>
+    <input type="text" id="rollno" name="rollNo" required><br><br>
+    <label for="enrollno">Enrollment No.:</label>
+    
+    <input type="text" id="enrollno" name="enrollno" required><br><br>
+
+    <label for="college">College Name:</label>
+    <input type="text" id="college" name="college" required><br><br>
+
+    <label for="semester">Semester:</label><br>
+    <select id="semester" name="semester" required>
+      <option value="">---Select---</option>
+      <option value="1">1st Semester</option>
+      <option value="2">2nd Semester</option>
+      <option value="3">3rd Semester</option>
+      <option value="4">4th Semester</option>
+      <option value="5">5th Semester</option>
+      <option value="6">6th Semester</option>
+    </select><br><br>
+    
+      <h5>Subjects:</h5><br>
+      <div id="subjects">
+      <label for=maths>Mathematics</label>
+      <input type="checkbox" name="subjects" class="subjects" value="Mathematics">
+      <label for=physics>Physics</label>
+      <input type="checkbox" name="subjects" class="subjects" value="Physics">
+      <label for=chemistry>Chemistry</label>
+      <input type="checkbox" name="subjects" class="subjects" value="Chemistry">
+      <label for=botony>Botony</label>
+      <input type="checkbox" name="subjects" class="subjects" value="Botony">
+      <label for=zoology>Zoology</label>
+      <input type="checkbox" name="subjects" class="subjects" value="Zoology">
+      <label for=geography>Geography</label>
+      <input type="checkbox" name="subjects" class="subjects" value="Geography">
+      <label for=defence>Defence</label>
+      <input type="checkbox" name="subjects" class="subjects" value="Defence"id="defence">
+    </div><br><br>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password"><br><br>
+    <label for="cmf_password">Confirm Password:</label>
+    <input type="password" name="cmf_password" id="cmf_password"><br><br> 
+    <button type="submit" id="submit">Submit</button>
+    <a href="login.html"><button type="submit" id="login">Login</button></a>
   </div>
-  <script src="main.js"></script>
+  <script src="main.js" type="module">
+  </script>
 </body>
 
 </html>

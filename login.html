@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
-</head>
 
+  <title>Mgkvp_official_website</title>
+
+  <!-- HTML -->
+
+
+  <!-- Custom Styles -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+  <link rel="stylesheet" href="login.css">
+</head>
 <body>
-<h1>This page for <b>DASHBOARD</b></h1>
+  <div class="main">
+    <p>Sign into your account</p>
+    <input type="text" name="enroll_num" id="enroll_num" placeholder="Enrollment No." maxlength="16" required><br><span id="enroll_alrt"></span><br>
+    <div class="pass"><input type="password" name="password" id="password" placeholder="Password" required><i class="ri-eye-fill" id="show"></i><i class="ri-eye-off-fill" id="hide"></i></div>
+    <span id="pass_alrt"></span>
+    <h6 id="indication">* In case of date of birth use MM/dd/yy format</h6>
+    <div id="captcha-container">
+      <div id="inline">
+        <canvas id="captcha-canvas" width="112" height="50"></canvas>
+        <img src="https://janhit.mgkvp.ac.in/JanhitAssestHome/img/Refresh-icon.png" width="25px" height="25px" id="captcha-refresh">
+      </div>
+      <input type="text" id="captcha_input" placeholder="Captcha" maxlength="6"><br><span id="capt_alrt"></span>
+    </div>
+    <button id="login">LOG IN</button>
+    <div class="footer">
+      <a href="/index.html">student registration</a>
+      <span>|</span>
+      <a href="/forgot_password.html">forgot password</a>
+    </div>
+    <p id="alert"></p>
+  </div>
+  <script src="login.js" type="module"></script>
 </body>
 
 </html>
