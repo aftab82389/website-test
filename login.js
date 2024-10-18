@@ -123,7 +123,7 @@ function confirmation() {
         if (password.value == pass) {
           alert("login successful")
           localStorage.setItem("enrollnum",enrollnum); 
-          window.location="/marksheet.html"
+          window.location="marksheet.html"
         }
         else {
           alert("password is not matched")
