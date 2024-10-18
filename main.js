@@ -49,7 +49,7 @@ function insertData() {
     .then(() => {
       console.log("Data successfully store");
       alert("Form Submission Successful"); 
-      window.location="/login.html";
+      window.location="login.html";
     })
     .catch((error) => {
       alert("Unsuccessful,error " + error)
